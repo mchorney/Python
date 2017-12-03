@@ -1,0 +1,36 @@
+body{
+	background-color: grey;
+	text-align: center;
+}
+
+div{
+	width: 150px;
+	height: 150px;
+	line-height: 100px;
+	color: white;
+	font-weight: 600;
+	margin: 10px auto;
+}
+.red{
+	background-color: red;
+}
+.green{
+	background-color: green;
+}
+
+input{
+	display: block;
+	margin:  10px auto;
+}
+
+input[type="text"]{
+	font-size: larger;
+	text-align: center;
+}
+
+input[type="submit"]{
+	font-size: larger;
+	background-color: blue;
+	color: white;
+	border-radius: 5px;
+}
