@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>The Wall</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+  <header>
+    <h1>CodingDojo Wall</h1>
+    <p>Welcome {{ session['first_name'] }}!</p>
+    <form action='/logout' method='GET'>
+      <input type='submit' value='Log Out'>
+    </form>
+  </header>
+  <h3>Post a message</h3>
+  <form action='/postmessage' method='POST'>
+    <input type='text' name='message' id='message'>
+    <input type='submit' value='Post Message' id='postmessage'>
+  </form>
+  <div id='messageblock'>
+    {% for message in all_msgs %}
+    <h4>{{ message['author'] }} - {{ message['time_created'] }}</h4>
+    <p>{{ message['message'] }}</p>
+    <div id='commentblock'>
+      {% for comment in all_comments %} {% if comment['message_id'] == message['id'] %}
+      <h5>{{ comment['commenter'] }} - {{ comment['time_created'] }}</h5>
+      <p>{{ comment['comment'] }}</p>
+      {% endif %} {% endfor %}
+
+      <form action='/postcomment' method='POST'>
+        <input type='hidden' name='message_id' value={{ message[ 'id'] }}>
+        <input type='text' name='comment' id='comment'>
+        <input type='submit' value='Post Comment' id='postcomment'>
+      </form>
+    </div>
+    {% endfor %}
+  </div>
+</body>
+
+</html>

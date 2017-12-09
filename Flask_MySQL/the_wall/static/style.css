@@ -1,0 +1,31 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  margin: 10px;
+  padding: 10px;
+}
+
+header{
+  border-bottom: 1px solid black;
+  display: inline;
+}
+
+#messageblock{
+  margin-left: 15px;
+}
+
+#commentblock{
+  margin-left: 15px;
+  margin-top: 5px;
+}
+
+#postmessage{
+  background-color: blue;
+}
+
+#postcomment{
+  background-color: green;
+}
