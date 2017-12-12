@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+
+<body>
+    <h2>Random Word (attempt #{{ request.session.attempt }})</h2>
+    <h1>{{ request.session.word }}</h1>
+    <form action='{% url 'generate' %}' method='POST'>
+        {% csrf_token %}
+        <input type='submit' name='generate' value='Generate'>
+    </form>
+    <form action='{% url 'reset' %}' method='POST'>
+        {% csrf_token %}
+        <input type='submit' name='reset' value='Reset'>
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+.box {
+  display: inline;
+  width: 150px;
+  margin-left: 10px;
+}
+
+header {
+  text-align: left;
+}
+
+.gain {
+  color: green;
+}
+
+.loss {
+  color: red;
+}
