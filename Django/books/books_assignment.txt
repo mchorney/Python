@@ -1,0 +1,99 @@
+Django version 1.11.2, using settings 'books.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.
+^C(djangoEnv) [ ~/Desktop/dojo_assignments/python_stack/django_assignments/books ]
+--> python manage.py makemigrations
+Migrations for 'first_app':
+  apps/first_app/migrations/0001_initial.py:
+    - Create model Book
+(djangoEnv) [ ~/Desktop/dojo_assignments/python_stack/django_assignments/books ]
+--> python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, first_app, sessions
+Running migrations:
+  Rendering model states... DONE
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying first_app.0001_initial... OK
+  Applying sessions.0001_initial... OK
+(djangoEnv) [ ~/Desktop/dojo_assignments/python_stack/django_assignments/books ]
+--> python manage.py shell
+Python 2.7.13 (default, Apr  4 2017, 08:47:57) 
+[GCC 4.2.1 Compatible Apple LLVM 8.1.0 (clang-802.0.38)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from apps.first_app.models import Product
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+ImportError: cannot import name Product
+>>> from apps.first_app.models import Book
+>>> book = Book.objects.create(title ="great book", author ="smart author", published_date = "01/17/2020",category = "fiction")
+>>> book
+<Book: Book object>
+>>>   book = Book.objects.create(title ="great  greater book", author ="smart author", published_date = "01/17/2020",category = "fiction")
+  File "<console>", line 1
+    book = Book.objects.create(title ="great  greater book", author ="smart author", published_date = "01/17/2020",category = "fiction")
+    ^
+IndentationError: unexpected indent
+>>> book = Book.objects.create(title ="great  greater book", author ="smart author", published_date = "01/17/2020",category = "fiction")
+>>> book = Book.objects.create(title ="great  greater book", author ="smart author", published_date = "01/17/2020",category = "fiction")
+>>> book = Book.objects.create(title ="great  greater book", author ="smart author", published_date = "01/17/2020",category = "fiction")
+>>> 
+KeyboardInterrupt
+>>> exit()
+(djangoEnv) [ ~/Desktop/dojo_assignments/python_stack/django_assignments/books ]
+--> python manage.py makemigrations
+You are trying to add a non-nullable field 'in_print' to book without a default; we can't do that (the database needs something to populate existing rows).
+Please select a fix:
+ 1) Provide a one-off default now (will be set on all existing rows with a null value for this column)
+ 2) Quit, and let me add a default in models.py
+Select an option: 1
+Please enter the default value now, as valid Python
+The datetime and django.utils.timezone modules are available, so you can do e.g. timezone.now
+Type 'exit' to exit this prompt
+>>> True
+Migrations for 'first_app':
+  apps/first_app/migrations/0002_book_in_print.py:
+    - Add field in_print to book
+(djangoEnv) [ ~/Desktop/dojo_assignments/python_stack/django_assignments/books ]
+--> python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, first_app, sessions
+Running migrations:
+  Rendering model states... DONE
+  Applying first_app.0002_book_in_print... OK
+(djangoEnv) [ ~/Desktop/dojo_assignments/python_stack/django_assignments/books ]
+--> python manage.py shell
+Python 2.7.13 (default, Apr  4 2017, 08:47:57) 
+[GCC 4.2.1 Compatible Apple LLVM 8.1.0 (clang-802.0.38)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from apps.first_app.models import Book
+>>> book = Book.objects.create(title ="great  greater book", author ="smart author", published_date = "01/17/2020",category = "fiction", in_print = False)
+>>> books = Book.objects.all()
+>>> books
+<QuerySet [<Book: Book object>, <Book: Book object>, <Book: Book object>, <Book: Book object>, <Book: Book object>]>
+>>>  for book in books:
+  File "<console>", line 1
+    for book in books:
+    ^
+IndentationError: unexpected indent
+>>> for book in books:
+...   print book.title, book.author, book.in_print
+... 
+great book smart author True
+great  greater book smart author True
+great  greater book smart author True
+great  greater book smart author True
+great  greater book smart author False
+Starting development server at http://127.0.0.1:8000/
