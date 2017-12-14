@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Show User</title>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <h1>User {{ user.id }}</h1>
+    <p>Full Name: {{ user.first_name }} {{ user.last_name }}</p>
+    <p>Email: {{ user.email }}</p>
+    <p>Created At: {{ user.created_at }}
+        <p>
+            <a href='/users/{{ user.id }}/edit'>Edit</a> |
+            <a href='/users/{{ user.id }}/delete'>Delete</a> |
+            <a href='{% url 'home' %}'>Go Back</a>
+</body>
+
+</html>
