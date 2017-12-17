@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'books/css/main.css' %}" media="screen" title="no title" charset="utf-8">
+</head>
+
+<body>
+    <div id='header'>
+        {% if logged_in %}
+        <span>
+            <a href='/book'>Books</a>
+        </span>
+        <span>
+            <a href='/book/users/home'>Home</a>
+        </span>
+        <span>
+            <a href='/book/add'>Add Book / Review</a>
+        </span>
+        <span>
+            <a href='/book/logout'>Log Out</a>
+        </span>
+        {% else %}
+        <span>
+            <a href='/'>Log In</a>
+        </span>
+        <span>
+            <a href='/'>Register</a>
+        </span>
+        {% endif %}
+    </div>
+    <h2>Welcome!</h2>
+    {% if messages %}
+    <div id="error">
+        {% for message in messages %}
+        <p class="error">{{ message }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+    <div id='reg'>
+        <form action='/register_action' method='POST'>
+            {% csrf_token %}
+            <span>First Name:</span>
+            <input type='text' name='first_name' maxlength="30" />
+            <span>Last Name:</span>
+            <input type='text' name='last_name' maxlength="30" />
+            <span>Email:</span>
+            <input type='text' name='email' maxlength="40" />
+            <span>Password:</span>
+            <input type='password' name='password' maxlength="20" />
+            <span>Confirm Password:</span>
+            <input type='password' name='confirm' maxlength="20" />
+            <input type='submit' value='Register' />
+        </form>
+    </div>
+    <div id='login'>
+        <form action='/login_action' method='POST'>
+            {% csrf_token %}
+            <span>Email:</span>
+            <input type='text' name='email' />
+            <span>Password:</span>
+            <input type='password' name='password' />
+            <input type='submit' value='Login' />
+        </form>
+    </div>
+</body>
+
+</html>
